@@ -62,5 +62,6 @@ public class PopularMoviesNicer {
         JavaPairRDD<Integer, Integer> sortedMovies = flipped.sortByKey();
         JavaPairRDD<String, String> results = sortedMovies.mapToPair((PairFunction<Tuple2<Integer, Integer>, String, String>) integerIntegerTuple2 -> new Tuple2<>(nameDict.getValue().get(integerIntegerTuple2._2()), integerIntegerTuple2._1().toString()));
         results.collect().forEach(System.out::println);
+
     }
 }
